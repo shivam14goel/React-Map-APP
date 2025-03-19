@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# React OpenLayers Map Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React application that demonstrates form handling and integrates OpenLayers for interactive mapping capabilities.
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+This application consists of two main routes:
+1. A user information form that collects a first name and mobile number
+2. A map page that displays the user's name and provides tools for creating, editing, and deleting geographic features
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **User Information Form**
+  - Input validation
+  - State management for user data
+  - Navigation between routes
+  - Bootstrap-based UI components
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **OpenLayers Map Integration**
+  - Draw polygons, lines, and points
+  - Edit existing features
+  - Delete all features
+  - Interactive map with zoom controls
+    
+## Images
+![image](https://github.com/user-attachments/assets/2fb560d1-3b11-498d-92c9-2aec440c9b87)
+![image](https://github.com/user-attachments/assets/097a2bde-aff3-49b2-88bf-b83de6b2cb51)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies Used
 
-### `npm run build`
+- React 18
+- React Router v6
+- OpenLayers 7
+- Bootstrap 5
+- JavaScript ES6+
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Usage
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Fill out the form on the homepage with your first name and mobile number
+2. Click "Submit" to navigate to the map page
+3. On the map page:
+   - Select a drawing type (Polygon, Line, or Point) from the dropdown
+   - Click on the map to start drawing
+   - For polygons and lines, click multiple times to add points
+   - Double-click to finish drawing
+   - Click and drag existing features to modify them
+   - Click the "Clear All" button to remove all features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## OpenLayers Integration
 
-### `npm run eject`
+The application utilizes several OpenLayers components:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- `Map` and `View`: Core components for the map display
+- `TileLayer` and `OSM`: Provides the base map from OpenStreetMap
+- `VectorLayer` and `VectorSource`: Manages the drawn features
+- `Draw`, `Modify`, and `Snap`: Interactions for creating and editing features
+- Styling components for visual presentation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Customization
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Changing the Base Map
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+To use a different base map, modify the TileLayer source in `Details.js`:
 
-## Learn More
+```javascript
+new TileLayer({
+  source: new XYZ({
+    url: 'https://your-tile-server/{z}/{x}/{y}.png'
+  })
+})
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Adding More Drawing Tools
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To add more drawing types, update the select options and handle the geometry type in `Details.jsx`.
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
